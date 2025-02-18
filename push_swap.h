@@ -17,13 +17,13 @@
 
 typedef struct s_data
 {
-	int				*content;
+	int				content;
 	struct s_data	*next;
 }			t_data;
 
 t_data	*data_set_generator(char **raw_data);
-t_data	*ft_lstnewdat(int *content);
+t_data	*ft_lstnewdat(int content);
 void	ft_lstadddat_back(t_data **lst, t_data *new);
-void	ft_lstcleardat(t_data **lst, void (*del)(void*));
+void ft_lstcleardat(t_data **lst);
 
 #endif

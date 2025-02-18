@@ -70,17 +70,17 @@ t_data	*data_set_generator(char **raw_data)
 	while (raw_data[i] != NULL)
 	{
 		if (!is_valid_number(raw_data[i]))
-			return (ft_lstcleardat(&data_set, free), NULL);
+			return (ft_lstcleardat(&data_set), NULL);
 		num = ft_atol(raw_data[i]);
 		if (!check_int_range(num))
-			return (ft_lstcleardat(&data_set, free), NULL);
-		new_node = ft_lstnewdat((int *)num);
+			return (ft_lstcleardat(&data_set), NULL);
+		new_node = ft_lstnewdat((int)num);
 		if (!new_node)
-			return (ft_lstcleardat(&data_set, free), NULL);
+			return (ft_lstcleardat(&data_set), NULL);
 		ft_lstadddat_back(&data_set, new_node);
 		i++;
 	}
 	if (duplicates(data_set))
-		return (ft_lstcleardat(&data_set, free), NULL);
+		return (ft_lstcleardat(&data_set), NULL);
 	return (data_set);
 }

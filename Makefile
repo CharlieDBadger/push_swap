@@ -6,12 +6,12 @@
 #    By: cbolanos <cbolanos@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 13:39:06 by cbolanos          #+#    #+#              #
-#    Updated: 2025/01/13 13:39:18 by cbolanos         ###   ########.fr        #
+#    Updated: 2025/02/18 14:57:03 by cbolanos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I.
+CFLAGS = -g -Wall -Werror -Wextra -I.
 
 NAME = main
 LIBFT = libft.a

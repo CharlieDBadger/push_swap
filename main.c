@@ -16,23 +16,35 @@
 
 void free_array(char **matrix)
 {
+	int i = 0;
+
+	if (!matrix)
+		return;
+	while (matrix[i])
+
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+}
+
+void ft_lstprint(t_data *lst)
+{
     int i = 0;
 
-    if (!matrix)
-        return;
-    while (matrix[i])
+    while (lst)
     {
-        free(matrix[i]);
+        ft_printf("Elemento #%i: %i\n", i, lst->content);
+        lst = lst->next;
         i++;
     }
-    free(matrix);
 }
 
 int	main(int argc, char **argv)
 {
 	char	**data;
 	t_data	*data_set;
-	int		i;
 	int		split;
 	
 	split = 0;
@@ -56,15 +68,8 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 
-	i = 0;
-	while (data_set)
-	{
-		ft_printf("Elemento #%i: %i\n", i, (long)data_set->content);
-		data_set = data_set->next;
-		i++;
-	}
-
-	ft_lstcleardat(&data_set, free);
+	ft_lstprint(data_set);
+	ft_lstcleardat(&data_set);
 	if(split)
 		free_array(data);
 	
