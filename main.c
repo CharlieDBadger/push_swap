@@ -26,11 +26,11 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		data = ft_split(argv[1], ' ');
-		data_set = data_set_generator_split(data);
+		data_set = data_set_generator(data);
+		free_array_reverse(data);
 	}
 	else
 		data_set = data_set_generator(argv);
-	
 	if (!data_set)
 	{
 		ft_printf("Error: Invalid data.\n");

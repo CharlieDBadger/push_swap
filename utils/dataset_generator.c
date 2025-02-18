@@ -65,35 +65,6 @@ int static	is_sorted_ascending(t_data *head)
 	return (1);
 }
 
-t_data	*data_set_generator_split(char **raw_data)
-{
-	int		i;
-	long	num;
-	t_data	*data_set;
-	t_data	*new_node;
-
-	data_set = NULL;
-	i = 0;
-	if (!ft_isdigit(*raw_data[i]))
-		i = 1;
-	while (raw_data[i] != NULL)
-	{
-		if (!is_valid_number(raw_data[i]))
-			return (ft_lstcleardat(&data_set), free_array(raw_data), NULL);
-		num = ft_atol(raw_data[i]);
-		if (num > INT_MAX || num < INT_MIN)
-			return (ft_lstcleardat(&data_set), free_array(raw_data), NULL);
-		new_node = ft_lstnewdat((int)num);
-		if (!new_node)
-			return (ft_lstcleardat(&data_set), free_array(raw_data), NULL);
-		ft_lstadddat_back(&data_set, new_node);
-		i++;
-	}
-	if (duplicates(data_set) || is_sorted_ascending(data_set))
-		return (ft_lstcleardat(&data_set), free_array(raw_data), NULL);
-	return (free_array(raw_data), data_set);
-}
-
 t_data	*data_set_generator(char **raw_data)
 {
 	int		i;

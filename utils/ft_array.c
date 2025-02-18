@@ -41,3 +41,27 @@ void	print_array(char **array)
 		i++;
 	}
 }
+
+int	count_array_elements(char **array)
+{
+	int	count;
+
+	if (!array)
+		return (0);
+	count = 0;
+	while (array[count])
+		count++;
+	return (count);
+}
+
+void	free_array_reverse(char **array)
+{
+	int	i;
+
+	if (!array)
+		return ;
+	i = count_array_elements(array);
+	while (--i >= 0)
+		free(array[i]);
+	free(array);
+}

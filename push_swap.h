@@ -33,4 +33,6 @@ void	ft_lstprint(t_data *lst);
 //array
 void	free_array(char **matrix);
 void	print_array(char **array);
+void	free_array_reverse(char **array);
+int		count_array_elements(char **array);
 #endif
