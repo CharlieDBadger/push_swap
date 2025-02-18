@@ -27,7 +27,7 @@ t_data	*ft_lstnewdat(int content)
 
 void	ft_lstadddat_back(t_data **lst, t_data *new)
 {
-	t_data *temp;
+	t_data	*temp;
 
 	if (!lst || !new)
 		return ;
@@ -39,20 +39,33 @@ void	ft_lstadddat_back(t_data **lst, t_data *new)
 	{
 		temp = *lst;
 		while (temp->next)
-		temp = temp->next;
+			temp = temp->next;
 		temp->next = new;
 	}
 }
 
-void ft_lstcleardat(t_data **lst)
+void	ft_lstcleardat(t_data **lst)
 {
-    t_data *temp;
+	t_data	*temp;
 
-    while (*lst)
-    {
-        temp = *lst;
-        *lst = (*lst)->next;
-        free(temp);
-    }
-    *lst = NULL;
+	while (*lst)
+	{
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp);
+	}
+	*lst = NULL;
+}
+
+void	ft_lstprint(t_data *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		ft_printf("Elemento #%i: %i\n", i, lst->content);
+		lst = lst->next;
+		i++;
+	}
 }

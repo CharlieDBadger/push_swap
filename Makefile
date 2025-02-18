@@ -18,7 +18,8 @@ LIBFT = libft.a
 
 SRC = main.c \
 	utils/dataset_generator.c \
-	utils/ft_data.c
+	utils/ft_data.c \
+	utils/ft_array.c
 
 OBJS = $(SRC:.c=.o)
 

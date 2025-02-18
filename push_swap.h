@@ -22,8 +22,15 @@ typedef struct s_data
 }			t_data;
 
 t_data	*data_set_generator(char **raw_data);
+t_data	*data_set_generator_split(char **raw_data);
+
+// lst
 t_data	*ft_lstnewdat(int content);
 void	ft_lstadddat_back(t_data **lst, t_data *new);
-void ft_lstcleardat(t_data **lst);
+void	ft_lstcleardat(t_data **lst);
+void	ft_lstprint(t_data *lst);
 
+//array
+void	free_array(char **matrix);
+void	print_array(char **array);
 #endif
