@@ -1,4 +1,4 @@
-1. Depuracion de datos ATOI, solo numeros unicos sin letras y tener en cuenta MAX y MIN int.
+1. Depuracion de datos ATOI, solo numeros unicos sin letras y tener en cuenta MAX y MIN int. Hecho
 
 2. Movimientos Push, Swap, Rotate, RevRotate.
 

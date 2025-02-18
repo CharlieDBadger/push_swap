@@ -1,40 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cbolanos <cbolanos@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/15 20:52:04 by cbolanos          #+#    #+#             */
+/*   Updated: 2025/02/15 20:52:08 by cbolanos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
+#include "push_swap.h"
 
-void    ft_print_array_main(char **array)
+
+void free_array(char **matrix)
 {
-    int i;
+    int i = 0;
 
-    if (!array)
+    if (!matrix)
         return;
-    i = 1;
-    while (array[i])
+    while (matrix[i])
     {
-        ft_printf("%s\n", array[i]);
+        free(matrix[i]);
         i++;
     }
+    free(matrix);
 }
 
 int	main(int argc, char **argv)
 {
-	t_list	*data_set;
 	char	**data;
+	t_data	*data_set;
 	int		i;
-
-
-	ft_print_array_main(argv);
+	int		split;
+	
+	split = 0;
 	if (argc == 1)
 	{
 		ft_putchar('\n');
 		return (1);
 	}
-
-	if (argc == 2)
+	else if (argc == 2)
+	{
 		data = ft_split(argv[1], ' ');
+		split = 1;
+	}
 	else
 		data = argv;
-	
-	ft_print_array_main(data);
 	
 	data_set = data_set_generator(data);
 	if (!data_set)
@@ -43,7 +56,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 
-	i = 1;
+	i = 0;
 	while (data_set)
 	{
 		ft_printf("Elemento #%i: %i\n", i, (long)data_set->content);
@@ -51,32 +64,10 @@ int	main(int argc, char **argv)
 		i++;
 	}
 
-	// Liberar la memoria
-	ft_lstclear(&data_set, free);
-
+	ft_lstcleardat(&data_set, free);
+	if(split)
+		free_array(data);
+	
 	return (0);
 }
 
-
-
-/*
-int main(int argc, char **argv)
-{
-	char	**data;	
-	
-	if(argc == 1)
-	{
-		ft_putchar('\n');
-		return 1;
-	}
-	if(argc == 2)
-		data = ft_split(argv[1], ' ');
-	else
-		data = argv;
-	
-	
-	
-	
-	return 0;
-}
-*/

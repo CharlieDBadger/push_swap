@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 
 int static	is_valid_number(char *s)
 {
@@ -35,10 +36,10 @@ int static	check_int_range(long n)
 	return (1);
 }
 
-int static	duplicates(t_list *head)
+int static	duplicates(t_data *head)
 {
-	t_list	*current;
-	t_list	*runner;
+	t_data	*current;
+	t_data	*runner;
 
 	current = head;
 	while (current != NULL)
@@ -55,29 +56,31 @@ int static	duplicates(t_list *head)
 	return (0);
 }
 
-t_list	*data_set_generator(char **raw_data)
+t_data	*data_set_generator(char **raw_data)
 {
 	int		i;
 	long	num;
-	t_list	*data_set;
-	t_list	*new_node;
+	t_data	*data_set;
+	t_data	*new_node;
 
 	data_set = NULL;
-	i = 1;
+	i = 0;
+	if (!ft_isdigit(*raw_data[i]))
+		i = 1;
 	while (raw_data[i] != NULL)
 	{
 		if (!is_valid_number(raw_data[i]))
-			return (NULL);
+			return (ft_lstcleardat(&data_set, free), NULL);
 		num = ft_atol(raw_data[i]);
 		if (!check_int_range(num))
-			return (NULL);
-		new_node = ft_lstnew((void *)num);
+			return (ft_lstcleardat(&data_set, free), NULL);
+		new_node = ft_lstnewdat((int *)num);
 		if (!new_node)
-			return (NULL);
-		ft_lstadd_back(&data_set, new_node);
+			return (ft_lstcleardat(&data_set, free), NULL);
+		ft_lstadddat_back(&data_set, new_node);
 		i++;
 	}
 	if (duplicates(data_set))
-		return (NULL);
+		return (ft_lstcleardat(&data_set, free), NULL);
 	return (data_set);
 }

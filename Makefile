@@ -17,7 +17,8 @@ NAME = main
 LIBFT = libft.a
 
 SRC = main.c \
-	utils/dataset_generator.c
+	utils/dataset_generator.c \
+	utils/ft_data.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -29,7 +30,7 @@ $(LIBFT):
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
-%.o: %.c libft.h  Makefile
+%.o: %.c libft.h push_swap.h Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

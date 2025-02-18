@@ -12,11 +12,13 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "push_swap.h"
+
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-#include <stdarg.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -60,7 +62,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(char const *s1, char const *set);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr(char const *s, size_t start, size_t len);
 
 //Bonus
 t_list	*ft_lstnew(void *content);
@@ -85,9 +87,4 @@ int		ft_putnum(int num);
 int		ft_putnum_abs(unsigned int num);
 int		ft_putn_hexm(unsigned int num);
 int		ft_putn_hexc(unsigned int num);
-
-
-
-t_list	*data_set_generator(char **raw_data);
-
 #endif
