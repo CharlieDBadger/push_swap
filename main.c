@@ -13,10 +13,33 @@
 #include "libft.h"
 #include "push_swap.h"
 
+t_stack	*split_lst_in_two(t_stack *stack)
+{
+	t_stack	*slow;
+	t_stack	*fast;
+	t_stack	*new_set;
+
+	if (!stack || !stack->next)
+		return (NULL);
+	slow = stack;
+	fast = stack;
+	while (fast->next && fast->next->next)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	new_set = slow->next;
+	slow->next = NULL;
+
+	return (new_set);
+}
+
+
 int	main(int argc, char **argv)
 {
 	char	**data;
-	t_data	*data_set;
+	t_stack	*stack;
+	t_stack	*stack2;
 
 	if (argc == 1)
 	{
@@ -26,17 +49,27 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		data = ft_split(argv[1], ' ');
-		data_set = data_set_generator(data);
+		stack = stack_generator(data, 1);
 		free_array_reverse(data);
 	}
 	else
-		data_set = data_set_generator(argv);
-	if (!data_set)
+		stack = stack_generator(argv, 1);
+	if (!stack)
 	{
 		ft_printf("Error: Invalid data.\n");
 		return (1);
 	}
-	ft_lstprint(data_set);
-	ft_lstcleardat(&data_set);
+	stack2 = split_lst_in_two(stack);
+	
+	reverse_rotate_r(&stack, &stack2);
+	
+	ft_printf("Primer mitad.\n");
+	ft_lstprint(stack);
+	ft_printf("Segunda mitad.\n");
+	ft_lstprint(stack2);
+	
+	
+	ft_lstcleardat(&stack);
+	ft_lstcleardat(&stack2);
 	return (0);
 }

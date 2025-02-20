@@ -13,55 +13,60 @@
 #include "libft.h"
 #include "push_swap.h"
 
-int	count_array_elements(char **array)
+t_stack	*ft_lstnewdat(int index, int value)
 {
-	int	count;
+	t_stack	*new_node;
 
-	if (!array)
-		return (0);
-	count = 0;
-	while (array[count])
-		count++;
-	return (count);
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (!new_node)
+		return (NULL);
+	new_node->index = index;
+	new_node->value = value;
+	new_node->next = NULL;
+	return (new_node);
 }
 
-void	free_array(char **matrix)
+void	ft_lstadddat_back(t_stack **lst, t_stack *new)
 {
-	int	i;
+	t_stack	*temp;
 
-	i = 0;
-	if (!matrix)
+	if (!lst || !new)
 		return ;
-	while (matrix[i])
+	if (*lst == NULL)
 	{
-		free(matrix[i]);
-		i++;
+		*lst = new;
 	}
-	free(matrix);
-}
-
-void	free_array_reverse(char **array)
-{
-	int	i;
-
-	if (!array)
-		return ;
-	i = count_array_elements(array);
-	while (--i >= 0)
-		free(array[i]);
-	free(array);
-}
-
-void	print_array(char **array)
-{
-	int	i;
-
-	if (!array)
-		return ;
-	i = 0;
-	while (array[i])
+	else
 	{
-		ft_printf("Elemento [%d]: %s\n", i, array[i]);
+		temp = *lst;
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new;
+	}
+}
+
+void	ft_lstcleardat(t_stack **lst)
+{
+	t_stack	*temp;
+
+	while (*lst)
+	{
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp);
+	}
+	*lst = NULL;
+}
+
+void	ft_lstprint(t_stack *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		ft_printf("Nodo#%i-index#%i-val:%i\n", i, lst->index, lst->value);
+		lst = lst->next;
 		i++;
 	}
 }

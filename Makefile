@@ -17,9 +17,13 @@ NAME = main
 LIBFT = libft.a
 
 SRC = main.c \
-	utils/dataset_generator.c \
-	utils/ft_data.c \
-	utils/ft_array.c
+	utils/stack_generator.c \
+	utils/ft_stack.c \
+	utils/ft_array.c \
+	utils/ft_push.c \
+	utils/ft_rotate.c \
+	utils/ft_reverse_rotate.c \
+	utils/ft_swap.c
 
 OBJS = $(SRC:.c=.o)
 
