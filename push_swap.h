@@ -17,7 +17,8 @@
 
 typedef struct s_data
 {
-	int				content;
+	int				index;
+	int				value;
 	struct s_data	*next;
 }			t_data;
 
@@ -25,7 +26,7 @@ t_data	*data_set_generator(char **raw_data);
 t_data	*data_set_generator_split(char **raw_data);
 
 // lst
-t_data	*ft_lstnewdat(int content);
+t_data	*ft_lstnewdat(int index, int value);
 void	ft_lstadddat_back(t_data **lst, t_data *new);
 void	ft_lstcleardat(t_data **lst);
 void	ft_lstprint(t_data *lst);

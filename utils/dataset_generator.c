@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-int static	is_valid_number(char *s)
+static int	is_valid_number(char *s)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ int static	is_valid_number(char *s)
 	return (1);
 }
 
-int static	duplicates(t_data *head)
+static int	duplicates(t_data *head)
 {
 	t_data	*current;
 	t_data	*runner;
@@ -40,7 +40,7 @@ int static	duplicates(t_data *head)
 		runner = current->next;
 		while (runner != NULL)
 		{
-			if (current->content == runner->content)
+			if (current->value == runner->value)
 				return (1);
 			runner = runner->next;
 		}
@@ -49,7 +49,7 @@ int static	duplicates(t_data *head)
 	return (0);
 }
 
-int static	is_sorted_ascending(t_data *head)
+static int	is_sorted_ascending(t_data *head)
 {
 	t_data	*current;
 
@@ -58,11 +58,11 @@ int static	is_sorted_ascending(t_data *head)
 	current = head;
 	while (current->next != NULL)
 	{
-		if (current->content > current->next->content)
+		if (current->value > current->next->value)
 			return (0);
 		current = current->next;
 	}
-	return (1);
+	return (1); 
 }
 
 t_data	*data_set_generator(char **raw_data)
@@ -83,7 +83,7 @@ t_data	*data_set_generator(char **raw_data)
 		num = ft_atol(raw_data[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			return (ft_lstcleardat(&data_set), NULL);
-		new_node = ft_lstnewdat((int)num);
+		new_node = ft_lstnewdat(i, (int)num);
 		if (!new_node)
 			return (ft_lstcleardat(&data_set), NULL);
 		ft_lstadddat_back(&data_set, new_node);

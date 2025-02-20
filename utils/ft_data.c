@@ -13,14 +13,17 @@
 #include "libft.h"
 #include "push_swap.h"
 
-t_data	*ft_lstnewdat(int content)
+t_data	*ft_lstnewdat(int index, int value)
 {
 	t_data	*new_node;
-
+	
+	if(!index)
+		index++;
 	new_node = (t_data *)malloc(sizeof(t_data));
 	if (!new_node)
 		return (NULL);
-	new_node->content = content;
+	new_node->index = index;
+	new_node->value = value;
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -64,7 +67,7 @@ void	ft_lstprint(t_data *lst)
 	i = 0;
 	while (lst)
 	{
-		ft_printf("Elemento #%i: %i\n", i, lst->content);
+		ft_printf("Elemento #%i - index #%i - value %i\n", i, lst->index, lst->value);
 		lst = lst->next;
 		i++;
 	}
