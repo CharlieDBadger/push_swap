@@ -30,6 +30,7 @@ void	reverse_rotate_a(t_stack **stack_a)
 	prev->next = NULL;
 	last->next = *stack_a;
 	*stack_a = last;
+	ft_printf("rra\n");
 }
 
 void	reverse_rotate_b(t_stack **stack_b)
@@ -49,10 +50,12 @@ void	reverse_rotate_b(t_stack **stack_b)
 	prev->next = NULL;
 	last->next = *stack_b;
 	*stack_b = last;
+	ft_printf("rrb\n");
 }
 
 void	reverse_rotate_r(t_stack **stack_a, t_stack **stack_b)
 {
 	reverse_rotate_a(stack_a);
 	reverse_rotate_b(stack_b);
+	ft_printf("rrr\n");
 }

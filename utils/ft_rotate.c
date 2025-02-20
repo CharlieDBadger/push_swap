@@ -27,6 +27,7 @@ void	rotate_a(t_stack **stack_a)
 	while (last->next)
 		last = last->next;
 	last->next = temp;
+	ft_printf("ra\n");
 }
 
 void	rotate_b(t_stack **stack_b)
@@ -43,10 +44,12 @@ void	rotate_b(t_stack **stack_b)
 	while (last->next)
 		last = last->next;
 	last->next = temp;
+	ft_printf("rb\n");
 }
 
 void	rotate_r(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate_a(stack_a);
 	rotate_b(stack_b);
+	ft_printf("rr\n");
 }

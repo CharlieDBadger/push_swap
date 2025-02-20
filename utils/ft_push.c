@@ -23,6 +23,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = temp->next;
 	temp->next = *stack_a;
 	*stack_a = temp;
+	ft_printf("pa\n");
 }
 
 void	push_b(t_stack **stack_a, t_stack **stack_b)
@@ -35,4 +36,5 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = temp->next;
 	temp->next = *stack_b;
 	*stack_b = temp;
+	ft_printf("pb\n");
 }
